@@ -27,9 +27,11 @@ public class Timetable{
     private long id;
 
     @NonNull
+    @Column(name = "session_time", columnDefinition = "TIME")
     private LocalTime sessionTime;
 
     @NonNull
+    @Column(name = "session_date", columnDefinition = "DATE")
     private LocalDate sessionDate;
 
     @NonNull
