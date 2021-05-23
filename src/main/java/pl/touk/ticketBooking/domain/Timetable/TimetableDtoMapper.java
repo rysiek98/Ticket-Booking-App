@@ -14,8 +14,8 @@ public class TimetableDtoMapper {
 
     private static TimetableDTO mapToTimeTableDto(Timetable repertoire) {
         return TimetableDTO.builder()
+                .id(repertoire.getId())
                 .session_time(repertoire.getSessionTime())
-                .session_date(repertoire.getSessionDate())
                 .movie_title(repertoire.getMovie().getTitle())
                 .build();
     }

@@ -23,4 +23,8 @@ public class TimetableService {
         LocalTime time = LocalTime.parse(sessionTime, DateTimeFormatter.ofPattern("HH:mm"));
         return timetableRepository.findByDay(date, time);
     }
+
+    public Timetable findById(long id) {
+        return timetableRepository.findById(id).orElseThrow();
+    }
 }

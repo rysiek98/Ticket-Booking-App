@@ -1,11 +1,11 @@
 package pl.touk.ticketBooking.domain.Ticket;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.Guest.Guest;
-import pl.touk.ticketBooking.domain.Movie.Movie;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
 
 import javax.persistence.*;
@@ -23,6 +23,8 @@ public class Ticket {
     private String type;
     @NonNull
     private float price;
+    @NotNull
+    private int seatNumber;
 
     @ManyToOne
     @JoinColumn(name="timetable_id")
@@ -31,6 +33,6 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name="guest_id")
-    @JsonIgnoreProperties("guests")
+    @JsonIgnoreProperties("tickets")
     private Guest guest;
 }

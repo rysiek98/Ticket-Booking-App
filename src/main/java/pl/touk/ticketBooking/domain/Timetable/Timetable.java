@@ -12,7 +12,9 @@ import pl.touk.ticketBooking.domain.Ticket.Ticket;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -39,7 +41,7 @@ public class Timetable{
 
     @OneToMany(mappedBy = "timetable", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("timetable")
-    private Set<Ticket> tickets = new HashSet<Ticket>();
+    private List<Ticket> tickets = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name="movie_id")

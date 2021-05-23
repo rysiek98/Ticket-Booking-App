@@ -10,6 +10,7 @@ import pl.touk.ticketBooking.domain.Timetable.Timetable;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,5 +31,5 @@ public class Guest {
 
     @OneToMany(mappedBy = "guest", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("guest")
-    private Set<Ticket> tickets = new HashSet<Ticket>();
+    private List<Ticket> tickets = new ArrayList<>();
 }

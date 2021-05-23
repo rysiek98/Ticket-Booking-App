@@ -7,11 +7,35 @@ INSERT INTO MOVIES(title) VALUES('Władca Pierścieni: Powrót Króla');
 INSERT INTO MOVIES(title) VALUES('Władca Pierścieni: Drużyna Pierścienia');
 INSERT INTO MOVIES(title) VALUES('Władca Pierścieni: Dwie wieże');
 
-INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 1',100);
-INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 2',50);
-INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 3',30);
+INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 1',5);
+INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 2',6);
+INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 3',4);
 
-INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('10:00','2021-05-20',3,5,1);
-INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('12:00','2021-05-20',23,2,2);
-INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('19:00','2021-05-20',10,1,3);
+INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('10:00','2021-05-20',0,5,1);
+INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('12:00','2021-05-20',0,2,2);
+INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('19:00','2021-05-20',0,1,3);
+
+INSERT INTO SEATS(seat_number,room_id) VALUES(1,1);
+INSERT INTO SEATS(seat_number,room_id) VALUES(2,1);
+INSERT INTO SEATS(seat_number,room_id) VALUES(3,1);
+INSERT INTO SEATS(seat_number,room_id) VALUES(4,1);
+INSERT INTO SEATS(seat_number,room_id) VALUES(5,1);
+
+INSERT INTO SEATS(seat_number,room_id) VALUES(1,2);
+INSERT INTO SEATS(seat_number,room_id) VALUES(2,2);
+INSERT INTO SEATS(seat_number,room_id) VALUES(3,2);
+INSERT INTO SEATS(seat_number,room_id) VALUES(4,2);
+INSERT INTO SEATS(seat_number,room_id) VALUES(5,2);
+INSERT INTO SEATS(seat_number,room_id) VALUES(6,2);
+
+INSERT INTO SEATS(seat_number,room_id) VALUES(1,3);
+INSERT INTO SEATS(seat_number,room_id) VALUES(2,3);
+INSERT INTO SEATS(seat_number,room_id) VALUES(3,3);
+INSERT INTO SEATS(seat_number,room_id) VALUES(4,3);
+
+INSERT INTO GUESTS(name,surname) VALUES('Michał','Ryszka');
+INSERT INTO GUESTS(name,surname) VALUES('Kamil','Ryszka');
+
+INSERT INTO TICKETS(type,price,seat_number,Guest_id,timetable_id) VALUES ('Student',15,3,1,2);
+INSERT INTO TICKETS(type,price,seat_number,Guest_id,timetable_id) VALUES ('Student',15,2,2,2);
 
