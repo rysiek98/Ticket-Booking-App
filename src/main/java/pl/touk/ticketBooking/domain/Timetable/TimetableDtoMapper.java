@@ -6,14 +6,15 @@ import java.util.stream.Collectors;
 public class TimetableDtoMapper {
 
     private TimetableDtoMapper(){}
-    public static List<TimetableDTO> mapToTimeTableDtos(List<Timetable> repertoires) {
+
+    public static List<TimetableDto> mapToTimeTableDtos(List<Timetable> repertoires) {
         return repertoires.stream()
                 .map(repertoire -> mapToTimeTableDto(repertoire))
                 .collect(Collectors.toList());
     }
 
-    private static TimetableDTO mapToTimeTableDto(Timetable repertoire) {
-        return TimetableDTO.builder()
+    private static TimetableDto mapToTimeTableDto(Timetable repertoire) {
+        return TimetableDto.builder()
                 .id(repertoire.getId())
                 .session_time(repertoire.getSessionTime())
                 .movie_title(repertoire.getMovie().getTitle())

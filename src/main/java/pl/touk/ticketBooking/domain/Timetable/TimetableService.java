@@ -2,6 +2,10 @@ package pl.touk.ticketBooking.domain.Timetable;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.touk.ticketBooking.domain.Guest.Guest;
+import pl.touk.ticketBooking.domain.Guest.GuestDto;
+import pl.touk.ticketBooking.domain.Guest.GuestDtoMapper;
+import pl.touk.ticketBooking.domain.Guest.GuestRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,6 +17,7 @@ import java.util.List;
 public class TimetableService {
 
     private final TimetableRepository timetableRepository;
+    private final GuestRepository guestRepository;
 
     public List<Timetable> getTimetable() {
         return timetableRepository.findAll();
@@ -26,5 +31,9 @@ public class TimetableService {
 
     public Timetable findById(long id) {
         return timetableRepository.findById(id).orElseThrow();
+    }
+
+    public GuestDto addTicket(Guest guest) {
+        return GuestDtoMapper.GuestDtoMapper(guestRepository.save(guest));
     }
 }

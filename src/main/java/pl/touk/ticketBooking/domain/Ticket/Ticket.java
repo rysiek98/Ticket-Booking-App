@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.Columns;
 import pl.touk.ticketBooking.domain.Guest.Guest;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
 
@@ -24,6 +25,7 @@ public class Ticket {
     @NonNull
     private float price;
     @NotNull
+    @Column(name = "seat_number")
     private int seatNumber;
 
     @ManyToOne

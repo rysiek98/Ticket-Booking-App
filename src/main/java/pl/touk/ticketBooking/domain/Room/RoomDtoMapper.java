@@ -11,8 +11,8 @@ public class RoomDtoMapper {
 
     private RoomDtoMapper(){}
 
-    public static RoomDTO mapToRoomDto(Timetable repertoire) {
-        return RoomDTO.builder()
+    public static RoomDto mapToRoomDto(Timetable repertoire) {
+        return RoomDto.builder()
                 .room(repertoire.getRoom().getRoomName())
                 .freeSeats(repertoire.getRoom().getNumberOfSeats()-repertoire.getTickets().size())
                 .availableSeats(availableSeats(repertoire.getRoom().getSeats(), repertoire.getTickets()))

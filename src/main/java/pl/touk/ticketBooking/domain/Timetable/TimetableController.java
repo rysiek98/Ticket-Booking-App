@@ -1,11 +1,12 @@
 package pl.touk.ticketBooking.domain.Timetable;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import pl.touk.ticketBooking.domain.Room.RoomDTO;
-import pl.touk.ticketBooking.domain.Room.RoomDtoMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import pl.touk.ticketBooking.domain.Guest.Guest;
+import pl.touk.ticketBooking.domain.Guest.GuestDto;
+import pl.touk.ticketBooking.domain.Room.RoomDto;
+
 
 import java.util.List;
 
@@ -24,13 +25,19 @@ public class TimetableController {
     }
 
     @GetMapping(value = "/repertoire/{day}/{time}")
-    public List<TimetableDTO> getRepertoire(@PathVariable String day, @PathVariable String time){
+    public List<TimetableDto> getRepertoire(@PathVariable String day, @PathVariable String time){
         return mapToTimeTableDtos(timetableService.getRepertoire(day, time));
     }
 
     @GetMapping(value = "/repertoire/movie/{id}")
-    public RoomDTO getRoom(@PathVariable long id){
+    public RoomDto getRoom(@PathVariable long id){
         return mapToRoomDto(timetableService.findById(id));
     }
-    
+
+    @PostMapping(value = "/repertoire/movie/{id}/buy")
+    @ResponseStatus(HttpStatus.CREATED)
+    private GuestDto addTicket(@RequestBody Guest guest){
+        return timetableService.addTicket(guest);
+    }
+
 }

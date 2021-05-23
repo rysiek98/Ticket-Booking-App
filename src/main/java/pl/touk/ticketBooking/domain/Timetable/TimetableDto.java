@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 @Getter
 @Builder
-public class TimetableDTO {
+public class TimetableDto {
     private long id;
     private LocalTime session_time;
     private String movie_title;
