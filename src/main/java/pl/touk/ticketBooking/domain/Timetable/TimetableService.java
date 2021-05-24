@@ -2,9 +2,8 @@ package pl.touk.ticketBooking.domain.Timetable;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.touk.ticketBooking.domain.Bill.Bill;
 import pl.touk.ticketBooking.domain.Guest.Guest;
-import pl.touk.ticketBooking.domain.Guest.GuestDto;
-import pl.touk.ticketBooking.domain.Guest.GuestDtoMapper;
 import pl.touk.ticketBooking.domain.Guest.GuestRepository;
 
 import java.time.LocalDate;
@@ -33,7 +32,13 @@ public class TimetableService {
         return timetableRepository.findById(id).orElseThrow();
     }
 
-    public GuestDto addTicket(Guest guest) {
-        return GuestDtoMapper.GuestDtoMapper(guestRepository.save(guest));
+    public Bill addTicket(Guest guest, long id) {
+        Timetable timetable = timetableRepository.findById(id).orElseThrow();
+        guest.getTickets().forEach(ticket -> ticket.countTicketPrice());
+        guest.getTickets().forEach(ticket -> ticket.setSessionTime(timetable.getSessionTime()));
+        guest.getTickets().forEach(ticket -> ticket.setSessionDate(timetable.getSessionDate()));
+        guest.getTickets().forEach(ticket -> ticket.setGuest(guest));
+        guest.getTickets().forEach(ticket -> ticket.setTimetable(timetable));
+        return Bill.createBill(guestRepository.save(guest), timetable.getSessionTime());
     }
 }

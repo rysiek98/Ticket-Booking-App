@@ -3,8 +3,8 @@ package pl.touk.ticketBooking.domain.Timetable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pl.touk.ticketBooking.domain.Bill.Bill;
 import pl.touk.ticketBooking.domain.Guest.Guest;
-import pl.touk.ticketBooking.domain.Guest.GuestDto;
 import pl.touk.ticketBooking.domain.Room.RoomDto;
 
 
@@ -36,8 +36,8 @@ public class TimetableController {
 
     @PostMapping(value = "/repertoire/movie/{id}/buy")
     @ResponseStatus(HttpStatus.CREATED)
-    private GuestDto addTicket(@RequestBody Guest guest){
-        return timetableService.addTicket(guest);
+    private Bill addTicket(@PathVariable long id, @RequestBody Guest guest){
+        return timetableService.addTicket(guest,id);
     }
 
 }

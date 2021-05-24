@@ -5,11 +5,13 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import org.hibernate.annotations.Columns;
 import pl.touk.ticketBooking.domain.Guest.Guest;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
 
 import javax.persistence.*;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -28,6 +30,14 @@ public class Ticket {
     @Column(name = "seat_number")
     private int seatNumber;
 
+    @NotNull
+    @Column(name = "session_date")
+    private LocalDate sessionDate;
+
+    @NotNull
+    @Column(name = "session_time")
+    private LocalTime sessionTime;
+
     @ManyToOne
     @JoinColumn(name="timetable_id")
     @JsonIgnoreProperties("tickets")
@@ -37,4 +47,23 @@ public class Ticket {
     @JoinColumn(name="guest_id")
     @JsonIgnoreProperties("tickets")
     private Guest guest;
+
+    public void countTicketPrice(){
+        switch (type){
+            case "adult": price = 25;
+                break;
+            case "student": price = 18;
+                break;
+            case "child": price = 12.5f;
+                break;
+            case "Adult": price = 25;
+                break;
+            case "Student": price = 18;
+                break;
+            case "Child": price = 12.5f;
+                break;
+            default: price = 25;
+        }
+    }
+
 }
