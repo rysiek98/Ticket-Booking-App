@@ -1,5 +1,6 @@
 package pl.touk.ticketBooking.domain.Room;
 
+import org.springframework.http.ResponseEntity;
 import pl.touk.ticketBooking.domain.Seat.Seat;
 import pl.touk.ticketBooking.domain.Ticket.Ticket;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;

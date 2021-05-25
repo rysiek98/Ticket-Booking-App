@@ -11,9 +11,12 @@ INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 1',5);
 INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 2',6);
 INSERT INTO ROOMS(room_name,number_of_seats) VALUES('Sala 3',4);
 
-INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('10:00','2021-05-20',0,5,1);
-INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('12:00','2021-05-20',0,2,2);
-INSERT INTO TIMETABLES(session_time,session_date,guests_number,movie_id,room_id) VALUES('19:00','2021-05-20',0,1,3);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('10:00','2021-05-20',5,1);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('12:00','2021-05-20',2,2);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('19:00','2021-05-20',1,3);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('00:20','2021-05-25',1,3);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('11:00','2021-05-20',5,3);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('11:00','2021-05-20',4,1);
 
 INSERT INTO SEATS(seat_number,room_id) VALUES(1,1);
 INSERT INTO SEATS(seat_number,room_id) VALUES(2,1);

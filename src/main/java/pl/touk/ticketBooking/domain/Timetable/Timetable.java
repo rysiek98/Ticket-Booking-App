@@ -36,9 +36,6 @@ public class Timetable{
     @Column(name = "session_date", columnDefinition = "DATE")
     private LocalDate sessionDate;
 
-    @NonNull
-    private int guestsNumber;
-
     @OneToMany(mappedBy = "timetable", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("timetable")
     private List<Ticket> tickets = new ArrayList<>();
