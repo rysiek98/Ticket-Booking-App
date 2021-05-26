@@ -17,6 +17,7 @@ INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('19:00
 INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('00:20','2021-05-25',1,3);
 INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('11:00','2021-05-20',5,3);
 INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('11:00','2021-05-20',4,1);
+INSERT INTO TIMETABLES(session_time,session_date,movie_id,room_id) VALUES('11:00','2021-05-27',7,1);
 
 INSERT INTO SEATS(seat_number,room_id) VALUES(1,1);
 INSERT INTO SEATS(seat_number,room_id) VALUES(2,1);
@@ -39,6 +40,6 @@ INSERT INTO SEATS(seat_number,room_id) VALUES(4,3);
 INSERT INTO GUESTS(name,surname) VALUES('Michał','Ryszka');
 INSERT INTO GUESTS(name,surname) VALUES('Kamil','Ryszka');
 
-INSERT INTO TICKETS(type,price,seat_number,Guest_id,timetable_id) VALUES ('Student',15,3,1,2);
-INSERT INTO TICKETS(type,price,seat_number,Guest_id,timetable_id) VALUES ('Student',15,2,2,2);
+INSERT INTO TICKETS(ticket_type,price,seat_number,session_date,session_time,Guest_id,timetable_id) VALUES ('Student',18,1,'2021-05-20','12:00',1,2);
+INSERT INTO TICKETS(ticket_type,price,seat_number,session_date,session_time,Guest_id,timetable_id) VALUES ('Student',18,2,'2021-05-20','12:00',2,2);
 

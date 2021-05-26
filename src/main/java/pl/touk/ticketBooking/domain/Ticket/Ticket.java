@@ -23,7 +23,8 @@ public class Ticket {
     @GeneratedValue(strategy = IDENTITY)
     private long id;
     @NonNull
-    private String type;
+    @Column(name = "ticket_type")
+    private String ticketType;
     @NonNull
     private float price;
     @NotNull
@@ -49,7 +50,7 @@ public class Ticket {
     private Guest guest;
 
     public void countTicketPrice(){
-        switch (type){
+        switch (ticketType){
             case "adult": price = 25;
                 break;
             case "student": price = 18;
