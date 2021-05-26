@@ -7,9 +7,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.Guest.Guest;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
-
 import javax.persistence.*;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 

@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.touk.ticketBooking.domain.Bill.Bill;
 import pl.touk.ticketBooking.domain.Guest.Guest;
 import pl.touk.ticketBooking.domain.Room.RoomDto;
-
-
 import java.util.List;
 
 import static pl.touk.ticketBooking.domain.Timetable.TimetableDtoMapper.mapToTimeTableDtos;

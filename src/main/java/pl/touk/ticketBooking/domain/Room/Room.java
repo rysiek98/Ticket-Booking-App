@@ -28,7 +28,7 @@ public class Room {
 
     @OneToMany(mappedBy = "room", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("room")
-    private Set<Timetable> timetables = new HashSet<Timetable>();
+    private Set<Timetable> timetables = new HashSet<>();
 
     @OneToMany(mappedBy = "room", targetEntity = Seat.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("room")

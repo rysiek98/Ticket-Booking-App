@@ -1,7 +1,6 @@
 package pl.touk.ticketBooking.domain.DataValidation;
 
 import pl.touk.ticketBooking.domain.Guest.Guest;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

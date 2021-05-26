@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.touk.ticketBooking.domain.Bill.Bill;
 import pl.touk.ticketBooking.domain.Guest.Guest;
 import pl.touk.ticketBooking.domain.Guest.GuestRepository;
@@ -41,6 +42,7 @@ public class TimetableService {
     }
 
     @SneakyThrows
+    @Transactional
     public ResponseEntity<Bill> addTickets(Guest guest, long id) {
 
         Timetable timetable = findById(id);

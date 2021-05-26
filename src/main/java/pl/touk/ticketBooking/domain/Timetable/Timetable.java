@@ -8,14 +8,12 @@ import lombok.Setter;
 import pl.touk.ticketBooking.domain.Movie.Movie;
 import pl.touk.ticketBooking.domain.Room.Room;
 import pl.touk.ticketBooking.domain.Ticket.Ticket;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 

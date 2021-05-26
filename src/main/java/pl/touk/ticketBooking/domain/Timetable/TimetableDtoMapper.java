@@ -12,7 +12,7 @@ public class TimetableDtoMapper {
 
     public static List<TimetableDto> mapToTimeTableDtos(List<Timetable> repertoires) {
         return sortByTime(sortByTitle(repertoires.stream()
-                .map(repertoire -> mapToTimeTableDto(repertoire))
+                .map(TimetableDtoMapper::mapToTimeTableDto)
                 .collect(Collectors.toList())));
     }
 

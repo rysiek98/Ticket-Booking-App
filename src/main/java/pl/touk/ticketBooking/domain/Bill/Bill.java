@@ -3,7 +3,7 @@ package pl.touk.ticketBooking.domain.Bill;
 import lombok.Builder;
 import lombok.Getter;
 import pl.touk.ticketBooking.domain.Guest.Guest;
-import pl.touk.ticketBooking.domain.Timetable.Timetable;
+import pl.touk.ticketBooking.domain.Ticket.Ticket;
 
 import java.time.LocalTime;
 
@@ -11,12 +11,12 @@ import java.time.LocalTime;
 @Builder
 public class Bill {
     private float totalCost;
-    private LocalTime sessionTime;
+    private LocalTime reservationExpirationTime;
 
     public static Bill createBill(Guest guest, LocalTime sessionTime){
         return Bill.builder()
-                .totalCost((float) guest.getTickets().stream().mapToDouble(ticket -> ticket.getPrice()).sum())
-                .sessionTime(sessionTime)
+                .totalCost((float) guest.getTickets().stream().mapToDouble(Ticket::getPrice).sum())
+                .reservationExpirationTime(sessionTime)
                 .build();
 
     }

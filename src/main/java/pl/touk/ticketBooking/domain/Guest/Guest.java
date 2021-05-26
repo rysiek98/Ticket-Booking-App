@@ -3,21 +3,15 @@ package pl.touk.ticketBooking.domain.Guest;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.Ticket.Ticket;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
-
 import javax.persistence.*;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 

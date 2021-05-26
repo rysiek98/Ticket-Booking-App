@@ -1,16 +1,12 @@
 package pl.touk.ticketBooking.domain.Seat;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.Room.Room;
 import pl.touk.ticketBooking.domain.Ticket.Ticket;
-
-
 import javax.persistence.*;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -73,7 +69,7 @@ public class Seat {
 
     private static boolean doNotLeftOneSeat(List<Ticket> ticketsToAdd,List<Ticket> existingTickets, List<Seat> seats){
         ticketsToAdd.forEach(ticket -> existingTickets.add(ticket));
-        existingTickets.sort(Comparator.comparingInt(t -> t.getSeatNumber()));
+        existingTickets.sort(Comparator.comparingInt(Ticket::getSeatNumber));
         if(existingTickets.get(0).getSeatNumber() == 2
                 || existingTickets.get(existingTickets.size()-1).getSeatNumber() == seats.get(seats.size()-1).getSeatNumber() - 1)
             return false;

@@ -2,7 +2,6 @@ package pl.touk.ticketBooking.domain.Timetable;
 
 import lombok.Builder;
 import lombok.Getter;
-
 import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.List;
