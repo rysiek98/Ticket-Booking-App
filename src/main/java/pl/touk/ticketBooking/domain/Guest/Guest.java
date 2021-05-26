@@ -35,12 +35,12 @@ public class Guest {
     @JsonIgnoreProperties("guest")
     private List<Ticket> tickets = new ArrayList<>();
 
-    public static void addTickets(Guest guest, LocalTime sessionTime, LocalDate sessionDate, Timetable timetable){
-        guest.getTickets().forEach(Ticket::countTicketPrice);
-        guest.getTickets().forEach(ticket -> ticket.setSessionTime(sessionTime));
-        guest.getTickets().forEach(ticket -> ticket.setSessionDate(sessionDate));
-        guest.getTickets().forEach(ticket -> ticket.setGuest(guest));
-        guest.getTickets().forEach(ticket -> ticket.setTimetable(timetable));
+    public void addTickets(LocalTime sessionTime, LocalDate sessionDate, Timetable timetable){
+        tickets.forEach(Ticket::countTicketPrice);
+        tickets.forEach(ticket -> ticket.setSessionTime(sessionTime));
+        tickets.forEach(ticket -> ticket.setSessionDate(sessionDate));
+        tickets.forEach(ticket -> ticket.setGuest(this));
+        tickets.forEach(ticket -> ticket.setTimetable(timetable));
     }
 
 }

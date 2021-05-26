@@ -38,7 +38,7 @@ public class TimetableController {
     @PostMapping(value = "/repertoire/movie/{id}/buy")
     @ResponseStatus(HttpStatus.CREATED)
     private ResponseEntity<Bill> addTicket(@PathVariable long id, @RequestBody Guest guest){
-        return timetableService.addTicket(guest,id);
+        return timetableService.addTickets(guest,id);
     }
 
 }
