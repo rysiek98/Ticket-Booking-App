@@ -1,4 +1,4 @@
-package pl.touk.ticketBooking.web;
+package pl.touk.ticketBooking.Exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

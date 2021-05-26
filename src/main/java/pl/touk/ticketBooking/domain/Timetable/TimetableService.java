@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 
+import static pl.touk.ticketBooking.domain.DataValidation.ValidateInput.validateNameAndSurname;
 import static pl.touk.ticketBooking.domain.Seat.Seat.reservingSeatsRules;
 
 @Service
@@ -48,8 +49,11 @@ public class TimetableService {
         guest.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
         timetable.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
 
-        if(validateReservationTime(sessionTime, sessionDate) && !guest.getTickets().isEmpty()
-                && reservingSeatsRules(guest.getTickets(), timetable.getTickets(),timetable.getRoom().getSeats())) {
+        if(validateReservationTime(sessionTime, sessionDate)
+                && !guest.getTickets().isEmpty()
+                && reservingSeatsRules(guest.getTickets(), timetable.getTickets(),timetable.getRoom().getSeats())
+                && validateNameAndSurname(guest)) {
+
             guest.addTickets(sessionTime, sessionDate, timetable);
             return new ResponseEntity<>(Bill.createBill(guestRepository.save(guest), timetable.getSessionTime()),HttpStatus.OK);
         }
