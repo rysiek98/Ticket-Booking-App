@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.touk.ticketBooking.domain.Bill.Bill;
 import pl.touk.ticketBooking.domain.Guest.Guest;
+import pl.touk.ticketBooking.domain.Movie.Movie;
+import pl.touk.ticketBooking.domain.Room.Room;
 import pl.touk.ticketBooking.domain.Room.RoomDto;
 import java.util.List;
 
@@ -35,8 +37,28 @@ public class TimetableController {
 
     @PostMapping(value = "/repertoire/movie/{id}/buy")
     @ResponseStatus(HttpStatus.CREATED)
-    private ResponseEntity<Bill> addTicket(@PathVariable long id, @RequestBody Guest guest){
+    private ResponseEntity<Bill> addMovie(@PathVariable long id, @RequestBody Guest guest){
         return timetableService.addTickets(guest,id);
     }
+
+    @PostMapping(value = "/cinema/movie/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    private ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
+        return timetableService.addMovie(movie);
+    }
+
+    @PostMapping(value = "/cinema/room/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    private ResponseEntity<Room> addRoom(@RequestBody Room room){
+        return timetableService.addRoom(room);
+    }
+
+    @PostMapping(value = "/cinema/timetable/add/{movieId}/{roomId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    private ResponseEntity<Timetable> addTimetable(@PathVariable long movieId,@PathVariable long roomId, @RequestBody Timetable timetable){
+        return timetableService.addTimetable(timetable, movieId, roomId);
+    }
+
+
 
 }

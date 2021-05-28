@@ -28,9 +28,21 @@ public class Room {
 
     @OneToMany(mappedBy = "room", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("room")
-    private Set<Timetable> timetables = new HashSet<>();
+    private List<Timetable> timetables = new ArrayList<>();
 
     @OneToMany(mappedBy = "room", targetEntity = Seat.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("room")
     private List<Seat> seats = new ArrayList<>();
+
+    public void createSeats(){
+        Seat seat;
+        for(int i = 0; i < numberOfSeats; i++){
+            seat = new Seat();
+            seat.setSeatNumber(i+1);
+            seat.setRoom(this);
+            seats.add(seat);
+        }
+        seat = null;
+    }
+
 }

@@ -32,7 +32,6 @@ INSERT INTO SEATS(seat_number,room_id) VALUES(6,1);
 INSERT INTO SEATS(seat_number,room_id) VALUES(7,1);
 INSERT INTO SEATS(seat_number,room_id) VALUES(8,1);
 
-
 INSERT INTO SEATS(seat_number,room_id) VALUES(1,2);
 INSERT INTO SEATS(seat_number,room_id) VALUES(2,2);
 INSERT INTO SEATS(seat_number,room_id) VALUES(3,2);

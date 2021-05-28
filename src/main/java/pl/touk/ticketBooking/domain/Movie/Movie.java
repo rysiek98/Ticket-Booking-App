@@ -7,8 +7,9 @@ import lombok.Setter;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
 import javax.persistence.Table;
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -27,7 +28,7 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("movie")
-    private Set<Timetable> timetables = new HashSet<Timetable>();
+    private List<Timetable> timetables = new ArrayList<>();
 
 
 }
