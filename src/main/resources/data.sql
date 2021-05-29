@@ -1,4 +1,4 @@
-INSERT INTO MOVIES(title) VALUES('Titanic');
+/*INSERT INTO MOVIES(title) VALUES('Titanic');
 INSERT INTO MOVIES(title) VALUES('Sami Swoi');
 INSERT INTO MOVIES(title) VALUES('Superman');
 INSERT INTO MOVIES(title) VALUES('Gwiezdne Wojny: Nowa Nadzieja');
@@ -52,3 +52,4 @@ INSERT INTO SEATS(seat_number,room_id) VALUES(6,3);
 INSERT INTO SEATS(seat_number,room_id) VALUES(7,3);
 
 
+*/
