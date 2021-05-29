@@ -29,7 +29,7 @@ public class Guest {
 
     @OneToMany(mappedBy = "guest", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("guest")
-    private List<Ticket> tickets = new ArrayList<>();
+    private List<Ticket> tickets = new ArrayList<Ticket>();
 
     public void addTickets(LocalTime sessionTime, LocalDate sessionDate, Timetable timetable){
         tickets.forEach(Ticket::countTicketPrice);

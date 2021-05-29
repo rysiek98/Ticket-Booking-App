@@ -51,18 +51,15 @@ public class TimetableService {
     @SneakyThrows
     @Transactional
     public ResponseEntity<Bill> addTickets(Guest guest, long id) {
-
         Timetable timetable = findById(id);
         LocalDate sessionDate = timetable.getSessionDate();
         LocalTime sessionTime = timetable.getSessionTime();
         guest.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
         timetable.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
-
         if(validateReservationTime(sessionTime, sessionDate)
                 && !guest.getTickets().isEmpty()
                 && reservingSeatsRules(guest.getTickets(), timetable.getTickets(),timetable.getRoom().getSeats())
                 && validateNameAndSurname(guest)) {
-
             guest.addTickets(sessionTime, sessionDate, timetable);
             return new ResponseEntity<>(Bill.createBill(guestRepository.save(guest), timetable.getSessionTime()),HttpStatus.OK);
         }

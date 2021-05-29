@@ -2,15 +2,14 @@
 package pl.touk.ticketBooking.domain.Room;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.Seat.Seat;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -23,7 +22,9 @@ public class Room {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private long id;
+    @NotNull
     private String roomName;
+    @NotNull
     private int numberOfSeats;
 
     @OneToMany(mappedBy = "room", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)

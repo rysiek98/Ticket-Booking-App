@@ -9,6 +9,9 @@ START cmd /k java -jar ticketBooking.jar
 
 TIMEOUT 8
 
+::Without this POST method, functionality buy ticket fun do not working. Bug to FIX 
+CURL -i -X POST -H "Content-Type:application/json" -d "{\"name\": \"Janek\",\"surname\": \"Kowalski\", \"tickets\": []}" http://localhost:8080/repertoire/movie/2/buy
+
 ::Add test data to database
 CURL -i -X POST -H "Content-Type:application/json" -d "{\"title\": \"Iron Man\"}" http://localhost:8080/cinema/movie/add
 CURL -i -X POST -H "Content-Type:application/json" -d "{\"title\": \"Wladca Pierscieni Druzyna Pierscienia\"}" http://localhost:8080/cinema/movie/add

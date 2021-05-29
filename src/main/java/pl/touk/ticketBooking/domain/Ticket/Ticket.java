@@ -20,11 +20,13 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private long id;
+
     @NonNull
     @Column(name = "ticket_type")
     private String ticketType;
-    @NonNull
+
     private float price;
+
     @NotNull
     @Column(name = "seat_number")
     private int seatNumber;

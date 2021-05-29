@@ -17,10 +17,9 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
+@Entity(name = "timetables")
 @Getter
 @Setter
-@Table(name = "timetables")
 public class Timetable{
     @Id
     @GeneratedValue(strategy = IDENTITY)

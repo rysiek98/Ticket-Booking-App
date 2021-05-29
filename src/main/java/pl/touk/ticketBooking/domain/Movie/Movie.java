@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.Timetable.Timetable;
-import javax.persistence.Table;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,9 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
+@Entity(name = "movies")
 @Setter
 @Getter
-@Table(name = "movies")
 public class Movie {
 
     @Id
