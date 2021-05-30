@@ -21,6 +21,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static pl.touk.ticketBooking.domain.DataValidation.ValidateInput.validateNameAndSurname;
+import static pl.touk.ticketBooking.domain.DataValidation.ValidateInput.validateReservationTime;
 import static pl.touk.ticketBooking.domain.Seat.Seat.reservingSeatsRules;
 
 @Service
@@ -64,11 +65,6 @@ public class TimetableService {
             return new ResponseEntity<>(Bill.createBill(guestRepository.save(guest), timetable.getSessionTime()),HttpStatus.OK);
         }
             throw new IllegalArgumentException();
-    }
-
-    private boolean validateReservationTime(LocalTime sessionTime, LocalDate sessionDate){
-        sessionTime.minusMinutes(15);
-        return ( (sessionDate.equals(LocalDate.now()) && LocalTime.now().isBefore(sessionTime)) || LocalDate.now().isBefore(sessionDate) );
     }
 
     public ResponseEntity<Movie> addMovie(Movie movie) {

@@ -12,7 +12,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "guests")
@@ -28,8 +27,8 @@ public class Guest {
     private String surname;
 
     @OneToMany(mappedBy = "guest", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("guest")
-    private List<Ticket> tickets = new ArrayList<Ticket>();
+    @JsonIgnoreProperties(value = {"guest"}, allowSetters = true)
+    private List<Ticket> tickets = new ArrayList<>();
 
     public void addTickets(LocalTime sessionTime, LocalDate sessionDate, Timetable timetable){
         tickets.forEach(Ticket::countTicketPrice);
@@ -38,5 +37,4 @@ public class Guest {
         tickets.forEach(ticket -> ticket.setGuest(this));
         tickets.forEach(ticket -> ticket.setTimetable(timetable));
     }
-
 }

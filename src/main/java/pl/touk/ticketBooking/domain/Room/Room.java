@@ -28,11 +28,11 @@ public class Room {
     private int numberOfSeats;
 
     @OneToMany(mappedBy = "room", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("room")
+    @JsonIgnoreProperties(value = {"room"})
     private List<Timetable> timetables = new ArrayList<>();
 
     @OneToMany(mappedBy = "room", targetEntity = Seat.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("room")
+    @JsonIgnoreProperties(value = {"room"})
     private List<Seat> seats = new ArrayList<>();
 
     public void createSeats(){

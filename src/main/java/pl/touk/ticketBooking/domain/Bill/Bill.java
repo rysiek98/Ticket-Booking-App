@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import pl.touk.ticketBooking.domain.Guest.Guest;
 import pl.touk.ticketBooking.domain.Ticket.Ticket;
-
 import java.time.LocalTime;
 
 @Getter

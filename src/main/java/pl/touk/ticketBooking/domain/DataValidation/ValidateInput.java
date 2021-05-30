@@ -1,6 +1,9 @@
 package pl.touk.ticketBooking.domain.DataValidation;
 
 import pl.touk.ticketBooking.domain.Guest.Guest;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,5 +23,9 @@ public class ValidateInput {
         Pattern p = Pattern.compile("[A-ZŻŹĆĄŚĘŁÓŃ]{1}[a-zżźćńółęąś]{2,20}+([-][A-ZŻŹĆĄŚĘŁÓŃ]{1}[a-zżźćńółęąś]{2,20})*");
         Matcher m = p.matcher(surname);
         return m.matches();
+    }
+
+    public static boolean validateReservationTime(LocalTime sessionTime, LocalDate sessionDate){
+        return ( (sessionDate.equals(LocalDate.now()) && LocalTime.now().isBefore(sessionTime.minusMinutes(15))) || LocalDate.now().isBefore(sessionDate) );
     }
 }

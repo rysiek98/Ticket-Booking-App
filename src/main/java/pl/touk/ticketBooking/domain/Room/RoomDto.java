@@ -2,7 +2,6 @@ package pl.touk.ticketBooking.domain.Room;
 
 import lombok.Builder;
 import lombok.Getter;
-
 import java.util.List;
 
 @Getter

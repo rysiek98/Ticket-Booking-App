@@ -34,17 +34,17 @@ public class Timetable{
     private LocalDate sessionDate;
 
     @OneToMany(mappedBy = "timetable", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("timetable")
+    @JsonIgnoreProperties(value = {"timetable"})
     private List<Ticket> tickets = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name="movie_id")
-    @JsonIgnoreProperties("timetables")
+    @JsonIgnoreProperties(value = {"timetables"})
     private Movie movie;
 
     @ManyToOne
     @JoinColumn(name="room_id")
-    @JsonIgnoreProperties("timetables")
+    @JsonIgnoreProperties(value = {"timetables"})
     private Room room;
 }
 

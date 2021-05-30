@@ -31,22 +31,20 @@ public class Ticket {
     @Column(name = "seat_number")
     private int seatNumber;
 
-    @NotNull
     @Column(name = "session_date")
     private LocalDate sessionDate;
 
-    @NotNull
     @Column(name = "session_time")
     private LocalTime sessionTime;
 
     @ManyToOne
     @JoinColumn(name="timetable_id")
-    @JsonIgnoreProperties("tickets")
+    @JsonIgnoreProperties(value = {"tickets"})
     private Timetable timetable;
 
     @ManyToOne
     @JoinColumn(name="guest_id")
-    @JsonIgnoreProperties("tickets")
+    @JsonIgnoreProperties(value = {"tickets"})
     private Guest guest;
 
     public void countTicketPrice(){

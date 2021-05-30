@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "movies")
@@ -25,8 +24,7 @@ public class Movie {
     private String title;
 
     @OneToMany(mappedBy = "movie", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("movie")
+    @JsonIgnoreProperties(value = {"movie"})
     private List<Timetable> timetables = new ArrayList<>();
-
 
 }

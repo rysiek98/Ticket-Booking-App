@@ -28,7 +28,7 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name="room_id")
-    @JsonIgnoreProperties("seats")
+    @JsonIgnoreProperties(value = {"seats"})
     private Room room;
 
     public static boolean reservingSeatsRules(List<Ticket> ticketsToAdd,List<Ticket> existingTickets, List<Seat> seats){
