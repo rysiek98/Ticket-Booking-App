@@ -7,7 +7,7 @@ Została napisana w języku Java (wersja 11) z wykorzystaniem frameworku Spring.
 
 Do uruchomienia wymagana jest instalacja JDK w wersji 11 lub wyższej.
 
-Plik wykonawczy znajduje się w folderze _App in JAR_, aby uruchomić aplikację uruchamiamy skrypt run_me.bat
+Plik wykonawczy znajduje się w folderze _APP in JAR_, aby uruchomić aplikację uruchamiamy skrypt run_me.bat
 (alternatywna metoda wykonujemy komende: _**java -jar ticketBooking.jar**_ lub klikamy na _ticketBooking.jar_, baza nie jest wtedy załadowana przykładowymi danymi i 
 nie wykonuje się przykładowy sceniariusz).
 
