@@ -1,9 +1,9 @@
-package pl.touk.ticketBooking.domain.Bill;
+package pl.touk.ticketBooking.domain.bill;
 
 import lombok.Builder;
 import lombok.Getter;
-import pl.touk.ticketBooking.domain.Guest.Guest;
-import pl.touk.ticketBooking.domain.Ticket.Ticket;
+import pl.touk.ticketBooking.domain.guest.Guest;
+import pl.touk.ticketBooking.domain.ticket.Ticket;
 import java.time.LocalTime;
 
 @Getter

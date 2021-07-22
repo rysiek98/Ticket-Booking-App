@@ -28,11 +28,11 @@ CURL -i -X POST -H "Content-Type:application/json" -d "{\"roomName\": \"Sala 2\"
 CURL -i -X POST -H "Content-Type:application/json" -d "{\"roomName\": \"Sala 3\",\"numberOfSeats\": 10}" http://localhost:8080/cinema/room/add
 @ECHO: 
 ::Add timetables
-CURL -i -X POST -H "Content-Type:application/json" -d "{\"sessionTime\": \"09:30\",\"sessionDate\": \"2021-06-02\"}"  http://localhost:8080/cinema/timetable/add/1/3
+CURL -i -X POST -H "Content-Type:application/json" -d "{\"sessionTime\": \"09:30\",\"sessionDate\": \"2021-06-02\"}"  http://localhost:8080/cinema/screening/add/1/3
 @ECHO: 
-CURL -i -X POST -H "Content-Type:application/json" -d "{\"sessionTime\": \"12:00\",\"sessionDate\": \"2021-06-02\"}" http://localhost:8080/cinema/timetable/add/2/1
+CURL -i -X POST -H "Content-Type:application/json" -d "{\"sessionTime\": \"12:00\",\"sessionDate\": \"2021-06-02\"}" http://localhost:8080/cinema/screening/add/2/1
 @ECHO: 
-CURL -i -X POST -H "Content-Type:application/json" -d "{\"sessionTime\": \"15:00\",\"sessionDate\": \"2021-06-03\"}" http://localhost:8080/cinema/timetable/add/3/2
+CURL -i -X POST -H "Content-Type:application/json" -d "{\"sessionTime\": \"15:00\",\"sessionDate\": \"2021-06-03\"}" http://localhost:8080/cinema/screening/add/3/2
 @ECHO: 
 
 ::Test use case

@@ -1,10 +1,11 @@
-package pl.touk.ticketBooking.domain.Movie;
+package pl.touk.ticketBooking.domain.movie;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import pl.touk.ticketBooking.domain.Timetable.Timetable;
+import pl.touk.ticketBooking.domain.screening.Screening;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,8 @@ public class Movie {
     @NonNull
     private String title;
 
-    @OneToMany(mappedBy = "movie", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "movie", targetEntity = Screening.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"movie"})
-    private List<Timetable> timetables = new ArrayList<>();
+    private List<Screening> screenings = new ArrayList<>();
 
 }

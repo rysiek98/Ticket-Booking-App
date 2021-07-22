@@ -91,7 +91,7 @@ Odpowiedź na zapytanie:
 
 ## Wszystkie dostępne endpointy:
 
-1)GET - http://localhost:8080/timetable - zwraca cały dostępny repertuar\
+1)GET - http://localhost:8080/screening - zwraca cały dostępny repertuar\
 2)GET - http://localhost:8080/repertoire/{wybrany_dzien}/{wybrana_godzina} - zwraca dostępny repertuar w wybrany dziń od wybranej godziny do końca dnia\
 3)GET - http://localhost:8080/repertoire/movie/{numer_id_wybranego_filmu} - zwraca informacje o sali kinowej dla wybranej projekcji\
 4)POST - http://localhost:8080/repertoire/movie/2 - pozwala wykonać rezerwację\
@@ -125,7 +125,7 @@ Typy biletów: Adult 25zł, Student 18zł, Child 12,5zł:
      "numberOfSeats": Ilość miejsc
 }
 ```
-7)POST - http://localhost:8080/cinema/timetable/{movie_id}/{room_id} - pozwala dodać nowy pokaz\
+7)POST - http://localhost:8080/cinema/screening/{movie_id}/{room_id} - pozwala dodać nowy pokaz\
 _movie_id_ tu id filmu który będzie pokazywany\
 _room_id_ tu id sali w której odbędzie się pokaz
 ```

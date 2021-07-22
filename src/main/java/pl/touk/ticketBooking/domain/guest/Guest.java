@@ -1,11 +1,12 @@
-package pl.touk.ticketBooking.domain.Guest;
+package pl.touk.ticketBooking.domain.guest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import pl.touk.ticketBooking.domain.Ticket.Ticket;
-import pl.touk.ticketBooking.domain.Timetable.Timetable;
+import pl.touk.ticketBooking.domain.screening.Screening;
+import pl.touk.ticketBooking.domain.ticket.Ticket;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -30,11 +31,11 @@ public class Guest {
     @JsonIgnoreProperties(value = {"guest"}, allowSetters = true)
     private List<Ticket> tickets = new ArrayList<>();
 
-    public void addTickets(LocalTime sessionTime, LocalDate sessionDate, Timetable timetable){
+    public void addTickets(LocalTime sessionTime, LocalDate sessionDate, Screening screening){
         tickets.forEach(Ticket::countTicketPrice);
         tickets.forEach(ticket -> ticket.setSessionTime(sessionTime));
         tickets.forEach(ticket -> ticket.setSessionDate(sessionDate));
         tickets.forEach(ticket -> ticket.setGuest(this));
-        tickets.forEach(ticket -> ticket.setTimetable(timetable));
+        tickets.forEach(ticket -> ticket.setScreening(screening));
     }
 }

@@ -1,4 +1,4 @@
-package pl.touk.ticketBooking.domain.Room;
+package pl.touk.ticketBooking.domain.room;
 
 import lombok.Builder;
 import lombok.Getter;

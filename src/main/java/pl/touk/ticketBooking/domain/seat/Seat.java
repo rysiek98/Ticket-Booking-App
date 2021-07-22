@@ -1,11 +1,11 @@
-package pl.touk.ticketBooking.domain.Seat;
+package pl.touk.ticketBooking.domain.seat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import pl.touk.ticketBooking.domain.Room.Room;
-import pl.touk.ticketBooking.domain.Ticket.Ticket;
+import pl.touk.ticketBooking.domain.room.Room;
+import pl.touk.ticketBooking.domain.ticket.Ticket;
 import javax.persistence.*;
 import java.util.Comparator;
 import java.util.List;

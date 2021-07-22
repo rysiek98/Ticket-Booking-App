@@ -1,12 +1,13 @@
 
-package pl.touk.ticketBooking.domain.Room;
+package pl.touk.ticketBooking.domain.room;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import pl.touk.ticketBooking.domain.Seat.Seat;
-import pl.touk.ticketBooking.domain.Timetable.Timetable;
+import pl.touk.ticketBooking.domain.screening.Screening;
+import pl.touk.ticketBooking.domain.seat.Seat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +28,9 @@ public class Room {
     @NotNull
     private int numberOfSeats;
 
-    @OneToMany(mappedBy = "room", targetEntity = Timetable.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "room", targetEntity = Screening.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"room"})
-    private List<Timetable> timetables = new ArrayList<>();
+    private List<Screening> screenings = new ArrayList<>();
 
     @OneToMany(mappedBy = "room", targetEntity = Seat.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"room"})

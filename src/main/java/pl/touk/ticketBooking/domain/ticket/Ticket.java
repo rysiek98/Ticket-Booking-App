@@ -1,12 +1,13 @@
-package pl.touk.ticketBooking.domain.Ticket;
+package pl.touk.ticketBooking.domain.ticket;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import pl.touk.ticketBooking.domain.Guest.Guest;
-import pl.touk.ticketBooking.domain.Timetable.Timetable;
+import pl.touk.ticketBooking.domain.guest.Guest;
+import pl.touk.ticketBooking.domain.screening.Screening;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,9 +39,9 @@ public class Ticket {
     private LocalTime sessionTime;
 
     @ManyToOne
-    @JoinColumn(name="timetable_id")
+    @JoinColumn(name="screening_id")
     @JsonIgnoreProperties(value = {"tickets"})
-    private Timetable timetable;
+    private Screening screening;
 
     @ManyToOne
     @JoinColumn(name="guest_id")

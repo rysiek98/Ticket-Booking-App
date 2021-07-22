@@ -1,9 +1,10 @@
-package pl.touk.ticketBooking.domain.Ticket;
+package pl.touk.ticketBooking.domain.movie;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface TicketRepository extends JpaRepository<Ticket, Long> {
+public interface MovieRepository extends JpaRepository<Movie, Long> {
 
 }

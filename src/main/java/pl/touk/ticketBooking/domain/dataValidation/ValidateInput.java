@@ -1,6 +1,6 @@
-package pl.touk.ticketBooking.domain.DataValidation;
+package pl.touk.ticketBooking.domain.dataValidation;
 
-import pl.touk.ticketBooking.domain.Guest.Guest;
+import pl.touk.ticketBooking.domain.guest.Guest;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -1,30 +1,30 @@
-package pl.touk.ticketBooking.domain.Timetable;
+package pl.touk.ticketBooking.domain.screening;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static pl.touk.ticketBooking.domain.Timetable.TimetableDto.sortByTitle;
+import static pl.touk.ticketBooking.domain.screening.ScreeningDto.sortByTitle;
 
-public class TimetableDtoMapper {
+public class ScreeningDtoMapper {
 
-    private TimetableDtoMapper(){}
+    private ScreeningDtoMapper(){}
 
-    public static List<TimetableDto> mapToTimeTableDtos(List<Timetable> repertoires) {
+    public static List<ScreeningDto> mapToTimeTableDtos(List<Screening> repertoires) {
         return sortByTime(sortByTitle(repertoires.stream()
-                .map(TimetableDtoMapper::mapToTimeTableDto)
+                .map(ScreeningDtoMapper::mapToTimeTableDto)
                 .collect(Collectors.toList())));
     }
 
-    private static TimetableDto mapToTimeTableDto(Timetable repertoire) {
-        return TimetableDto.builder()
+    private static ScreeningDto mapToTimeTableDto(Screening repertoire) {
+        return ScreeningDto.builder()
                 .id(repertoire.getId())
                 .session_time(repertoire.getSessionTime())
                 .movie_title(repertoire.getMovie().getTitle())
                 .build();
     }
 
-    private static List<TimetableDto> sortByTime(List<TimetableDto> timetables){
+    private static List<ScreeningDto> sortByTime(List<ScreeningDto> timetables){
        return timetables.stream().sorted(Comparator.comparingInt(t -> t.getSession_time().toSecondOfDay())).collect(Collectors.toList());
 
     }
