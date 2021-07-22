@@ -16,10 +16,14 @@ public class Bill {
 
     public static Bill createBill(Guest guest, LocalTime sessionTime){
         return Bill.builder()
-                .totalCost(BigDecimal.valueOf(guest.getTickets().stream().mapToDouble(Ticket::getPrice).sum()))
+                .totalCost(calculateTotalCost(guest))
                 .reservationExpirationTime(sessionTime)
                 .build();
 
+    }
+
+    private static BigDecimal calculateTotalCost(Guest guest) {
+        return guest.getTickets().stream().map(Ticket::getPrice).reduce(BigDecimal.ZERO,BigDecimal::add);
     }
 
 }

@@ -57,7 +57,7 @@ public class ScreeningService {
         LocalTime sessionTime = screening.getSessionTime();
         guest.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
         screening.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
-        if(validateReservationTime(sessionTime, sessionDate)
+       if(validateReservationTime(sessionTime, sessionDate)
                 && !guest.getTickets().isEmpty()
                 && reservingSeatsRules(guest.getTickets(), screening.getTickets(), screening.getRoom().getSeats())
                 && validateNameAndSurname(guest)) {

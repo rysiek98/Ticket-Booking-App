@@ -9,6 +9,7 @@ import pl.touk.ticketBooking.domain.guest.Guest;
 import pl.touk.ticketBooking.domain.screening.Screening;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -25,8 +26,7 @@ public class Ticket {
     @NonNull
     @Column(name = "ticket_type")
     private String ticketType;
-
-    private float price;
+    private BigDecimal price;
 
     @NotNull
     @Column(name = "seat_number")
@@ -50,19 +50,19 @@ public class Ticket {
 
     public void countTicketPrice(){
         switch (ticketType){
-            case "adult": price = 25;
+            case "adult": price = BigDecimal.valueOf(25);
                 break;
-            case "student": price = 18;
+            case "student": price = BigDecimal.valueOf(18);
                 break;
-            case "child": price = 12.5f;
+            case "child": price = BigDecimal.valueOf(12.5);
                 break;
-            case "Adult": price = 25;
+            case "Adult": price = BigDecimal.valueOf(25);
                 break;
-            case "Student": price = 18;
+            case "Student": price = BigDecimal.valueOf(18);
                 break;
-            case "Child": price = 12.5f;
+            case "Child": price = BigDecimal.valueOf(12.5);
                 break;
-            default: price = 25;
+            default: price = BigDecimal.valueOf(25);
         }
     }
 
