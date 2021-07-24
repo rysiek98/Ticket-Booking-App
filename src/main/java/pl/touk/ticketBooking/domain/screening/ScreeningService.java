@@ -21,9 +21,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 
-import static pl.touk.ticketBooking.domain.dataValidation.ValidateInput.validateNameAndSurname;
-import static pl.touk.ticketBooking.domain.dataValidation.ValidateInput.validateReservationTime;
-import static pl.touk.ticketBooking.domain.seat.Seat.reservingSeatsRules;
+import static pl.touk.ticketBooking.domain.dataValidation.ValidateInput.isReservationValid;
+
 
 @Service
 @RequiredArgsConstructor
@@ -59,10 +58,7 @@ public class ScreeningService {
         LocalTime sessionTime = screening.getSessionTime();
         guest.getTickets().sort(Comparator.comparingInt(Ticket::getSeatNumber));
         screening.getTickets().sort(Comparator.comparingInt(Ticket::getSeatNumber));
-       if(validateReservationTime(sessionTime, sessionDate)
-                && !guest.getTickets().isEmpty()
-                && reservingSeatsRules(guest.getTickets(), screening.getTickets(), screening.getRoom().getSeats())
-                && validateNameAndSurname(guest)) {
+       if(isReservationValid(sessionTime, sessionDate, guest, screening)) {
             guest.addTickets(sessionTime, sessionDate, screening);
             return new ResponseEntity<>(Bill.createBill(guestRepository.save(guest), screening.getSessionTime()),HttpStatus.OK);
         }
