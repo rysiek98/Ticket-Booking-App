@@ -13,7 +13,8 @@ import pl.touk.ticketBooking.domain.movie.Movie;
 import pl.touk.ticketBooking.domain.movie.MovieRepository;
 import pl.touk.ticketBooking.domain.room.Room;
 import pl.touk.ticketBooking.domain.room.RoomRepository;
-
+import pl.touk.ticketBooking.domain.ticket.Ticket;
+import pl.touk.ticketBooking.domain.ticket.TicketRequestWrapper;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -38,10 +39,10 @@ public class ScreeningService {
     }
 
     @SneakyThrows
-    public List<Screening> getRepertoire(String day, String sessionTime) {
+    public List<Screening> getScreeningByDayTime(String day, String sessionTime) {
         LocalDate date = LocalDate.parse(day);
         LocalTime time = LocalTime.parse(sessionTime, DateTimeFormatter.ofPattern("HH:mm"));
-        return screeningRepository.findByDay(date, time);
+        return screeningRepository.findByDayAndTime(date, time);
     }
 
     @SneakyThrows
@@ -51,12 +52,13 @@ public class ScreeningService {
 
     @SneakyThrows
     @Transactional
-    public ResponseEntity<Bill> addTickets(Guest guest, long id) {
-        Screening screening = findById(id);
+    public ResponseEntity<Bill> addTickets(TicketRequestWrapper ticketRequestWrapper) {
+        Guest guest = ticketRequestWrapper.getGuest();
+        Screening screening = findById(ticketRequestWrapper.getScreeningId());
         LocalDate sessionDate = screening.getSessionDate();
         LocalTime sessionTime = screening.getSessionTime();
-        guest.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
-        screening.getTickets().sort(Comparator.comparingInt(t -> t.getSeatNumber()));
+        guest.getTickets().sort(Comparator.comparingInt(Ticket::getSeatNumber));
+        screening.getTickets().sort(Comparator.comparingInt(Ticket::getSeatNumber));
        if(validateReservationTime(sessionTime, sessionDate)
                 && !guest.getTickets().isEmpty()
                 && reservingSeatsRules(guest.getTickets(), screening.getTickets(), screening.getRoom().getSeats())
@@ -78,9 +80,10 @@ public class ScreeningService {
 
     @Transactional
     @SneakyThrows
-    public ResponseEntity<Screening> addTimetable(Screening screening, long movieId, long roomId) {
-        Movie movie = movieRepository.findById(movieId).orElseThrow();
-        Room room = roomRepository.findById(roomId).orElseThrow();
+    public ResponseEntity<Screening> addScreening(ScreeningRequestWrapper screeningRequestWrapper) {
+        Movie movie = movieRepository.findById(screeningRequestWrapper.getMovieId()).orElseThrow();
+        Room room = roomRepository.findById(screeningRequestWrapper.getRoomId()).orElseThrow();
+        Screening screening = screeningRequestWrapper.getScreening();
         screening.setMovie(movie);
         screening.setRoom(room);
         return new ResponseEntity<>(screeningRepository.save(screening), HttpStatus.OK);

@@ -10,13 +10,13 @@ public class ScreeningDtoMapper {
 
     private ScreeningDtoMapper(){}
 
-    public static List<ScreeningDto> mapToTimeTableDtos(List<Screening> repertoires) {
+    public static List<ScreeningDto> mapToScreeningDto(List<Screening> repertoires) {
         return sortByTime(sortByTitle(repertoires.stream()
-                .map(ScreeningDtoMapper::mapToTimeTableDto)
+                .map(ScreeningDtoMapper::mapToScreeningDto)
                 .collect(Collectors.toList())));
     }
 
-    private static ScreeningDto mapToTimeTableDto(Screening repertoire) {
+    private static ScreeningDto mapToScreeningDto(Screening repertoire) {
         return ScreeningDto.builder()
                 .id(repertoire.getId())
                 .session_time(repertoire.getSessionTime())
