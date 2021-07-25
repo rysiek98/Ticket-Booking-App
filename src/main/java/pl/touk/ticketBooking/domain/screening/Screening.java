@@ -24,24 +24,19 @@ public class Screening {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private long id;
-
     @NonNull
     @Column(name = "session_time", columnDefinition = "TIME")
     private LocalTime sessionTime;
-
     @NonNull
     @Column(name = "session_date", columnDefinition = "DATE")
     private LocalDate sessionDate;
-
     @OneToMany(mappedBy = "screening", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"screening"})
     private List<Ticket> tickets = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name="movie_id")
     @JsonIgnoreProperties(value = {"screenings"})
     private Movie movie;
-
     @ManyToOne
     @JoinColumn(name="room_id")
     @JsonIgnoreProperties(value = {"screenings"})

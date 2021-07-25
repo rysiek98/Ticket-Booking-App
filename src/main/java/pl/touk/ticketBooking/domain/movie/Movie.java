@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.screening.Screening;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +19,8 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private long id;
-
     @NonNull
     private String title;
-
     @OneToMany(mappedBy = "movie", targetEntity = Screening.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"movie"})
     private List<Screening> screenings = new ArrayList<>();

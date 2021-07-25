@@ -59,7 +59,7 @@ public class ScreeningService {
         guest.getTickets().sort(Comparator.comparingInt(Ticket::getSeatNumber));
         screening.getTickets().sort(Comparator.comparingInt(Ticket::getSeatNumber));
        if(isReservationValid(sessionTime, sessionDate, guest, screening)) {
-            guest.addTickets(sessionTime, sessionDate, screening);
+            guest.createTickets(sessionTime, sessionDate, screening);
             return new ResponseEntity<>(Bill.createBill(guestRepository.save(guest), screening.getSessionTime()),HttpStatus.OK);
         }
             throw new IllegalArgumentException();

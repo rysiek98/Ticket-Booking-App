@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Locale;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -49,21 +50,21 @@ public class Ticket {
     private Guest guest;
 
     public void countTicketPrice(){
-        switch (ticketType){
-            case "adult": price = BigDecimal.valueOf(25);
-                break;
+        switch (ticketType.toLowerCase(Locale.ROOT)){
             case "student": price = BigDecimal.valueOf(18);
                 break;
             case "child": price = BigDecimal.valueOf(12.5);
                 break;
-            case "Adult": price = BigDecimal.valueOf(25);
-                break;
-            case "Student": price = BigDecimal.valueOf(18);
-                break;
-            case "Child": price = BigDecimal.valueOf(12.5);
-                break;
             default: price = BigDecimal.valueOf(25);
         }
+    }
+
+    public void setTicketData(LocalTime sessionTime, LocalDate sessionDate, Screening screening, Guest guest){
+        this.setSessionTime(sessionTime);
+        this.setSessionDate(sessionDate);
+        this.setScreening(screening);
+        this.countTicketPrice();
+        this.setGuest(guest);
     }
 
 }

@@ -6,7 +6,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.screening.Screening;
 import pl.touk.ticketBooking.domain.ticket.Ticket;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,16 +25,12 @@ public class Guest {
     private String name;
     @NonNull
     private String surname;
-
     @OneToMany(mappedBy = "guest", targetEntity = Ticket.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"guest"}, allowSetters = true)
     private List<Ticket> tickets = new ArrayList<>();
 
-    public void addTickets(LocalTime sessionTime, LocalDate sessionDate, Screening screening){
-        tickets.forEach(Ticket::countTicketPrice);
-        tickets.forEach(ticket -> ticket.setSessionTime(sessionTime));
-        tickets.forEach(ticket -> ticket.setSessionDate(sessionDate));
-        tickets.forEach(ticket -> ticket.setGuest(this));
-        tickets.forEach(ticket -> ticket.setScreening(screening));
+    public void createTickets(LocalTime sessionTime, LocalDate sessionDate, Screening screening){
+        tickets.forEach(ticket -> ticket.setTicketData(sessionTime, sessionDate, screening, this));
     }
+
 }

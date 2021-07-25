@@ -15,7 +15,7 @@ class ExceptionHandlerController {
 
     @ExceptionHandler(IllegalArgumentException.class)
     private ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException exception){
-        return new ResponseEntity<>("INVALID INPUT DATA1", BAD_REQUEST);
+        return new ResponseEntity<>("INVALID INPUT DATA", BAD_REQUEST);
     }
 
     @ExceptionHandler(IOException.class)
@@ -30,12 +30,12 @@ class ExceptionHandlerController {
 
     @ExceptionHandler(DateTimeParseException.class)
     private ResponseEntity<String> handleDateTimeParseException(DateTimeParseException exception){
-        return new ResponseEntity<>("INVALID INPUT DATA2", BAD_REQUEST);
+        return new ResponseEntity<>("INVALID INPUT DATA", BAD_REQUEST);
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     private ResponseEntity<String> handleNoSuchElementException(NoSuchElementException exception){
-        return new ResponseEntity<>("INVALID INPUT DATA3", BAD_REQUEST);
+        return new ResponseEntity<>("INVALID INPUT DATA", BAD_REQUEST);
     }
 
 }

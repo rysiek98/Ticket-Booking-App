@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.screening.Screening;
 import pl.touk.ticketBooking.domain.seat.Seat;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,6 @@ public class Room {
     private String roomName;
     @NotNull
     private int numberOfSeats;
-
     @OneToMany(mappedBy = "room", targetEntity = Screening.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"room"})
     private List<Screening> screenings = new ArrayList<>();
@@ -37,14 +35,13 @@ public class Room {
     private List<Seat> seats = new ArrayList<>();
 
     public void createSeats(){
-        Seat seat;
+        Seat seat = null;
         for(int i = 0; i < numberOfSeats; i++){
             seat = new Seat();
             seat.setSeatNumber(i+1);
             seat.setRoom(this);
             seats.add(seat);
         }
-        seat = null;
     }
 
 }

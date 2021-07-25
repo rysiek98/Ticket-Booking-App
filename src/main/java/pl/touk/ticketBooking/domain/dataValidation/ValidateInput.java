@@ -2,7 +2,6 @@ package pl.touk.ticketBooking.domain.dataValidation;
 
 import pl.touk.ticketBooking.domain.guest.Guest;
 import pl.touk.ticketBooking.domain.screening.Screening;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.regex.Matcher;

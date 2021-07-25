@@ -10,7 +10,6 @@ import pl.touk.ticketBooking.domain.movie.Movie;
 import pl.touk.ticketBooking.domain.room.Room;
 import pl.touk.ticketBooking.domain.room.RoomDto;
 import pl.touk.ticketBooking.domain.ticket.TicketRequestWrapper;
-
 import java.util.List;
 
 import static pl.touk.ticketBooking.domain.screening.ScreeningDtoMapper.mapToScreeningDto;
