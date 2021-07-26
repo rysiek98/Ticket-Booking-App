@@ -7,7 +7,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.touk.ticketBooking.domain.guest.Guest;
 import pl.touk.ticketBooking.domain.screening.Screening;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
